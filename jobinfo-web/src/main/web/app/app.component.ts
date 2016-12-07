@@ -11,15 +11,19 @@ import { JobInfoService } from './jobinfo.service';
     templateUrl: 'app.component.html'
 })
 export class AppComponent {
-
-    needsAuthentication = false;
-    username: string;
-    password: string;
     name = 'JobInfo';
     title = "Job Info";
 
+    needsAuthentication = false;
+    notFound = false;
+
+    username: string;
+    password: string;
+
     jobId: string;
     system: string;
+    lastJobId: string;
+    lastSystem: string;
 
     jobInfo: JobInfo;
 
@@ -28,13 +32,19 @@ export class AppComponent {
 
     submit(): void {
         let self = this;
-        this.needsAuthentication = false;
         if ( this.jobId && this.system ) {
+            this.needsAuthentication = false;
+            this.notFound = false;
+            this.lastJobId = this.jobId;
+            this.lastSystem = this.system;
             this.jobInfoSvc.getJobInfo( this.username, this.password, this.jobId, this.system ).then( jobInfo => this.jobInfo = jobInfo ).catch( function( r ) {
                 if ( r instanceof Response ) {
                     let response = r as Response;
-                    if ( response.status === 401 ) {
+                    let status = response.status;
+                    if ( status === 401 ) {
                         self.needsAuthentication = true;
+                    } else if ( status === 404 ) {
+                        self.notFound = true;
                     }
                 } else {
                     alert( "response is '" + r + "'" );
