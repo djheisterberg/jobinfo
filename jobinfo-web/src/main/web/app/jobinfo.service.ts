@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -13,9 +13,12 @@ export class JobInfoService {
     constructor( private http: Http ) {
     }
 
-    getJobInfo( id: string, system: string ): Promise<JobInfo> {
+    getJobInfo( username: string, password: string, id: string, system: string ): Promise<JobInfo> {
         let url = this.baseURL + `?id=${id}&system=${system}`;
-        return this.http.get( url ).toPromise().then( this.extract ).catch( this.handleError ) as Promise<JobInfo>;
+
+        let headers = ( username && password ) ? new Headers( { 'Authorization': 'Basic ' + btoa( username + ":" + password ) }) : null;
+        let options = headers ? new RequestOptions( { headers: headers }) : null;
+        return this.http.get( url, options ).toPromise().then( response => response.json() ) as Promise<JobInfo>;
     }
 
     private extract( resp: Response ) {

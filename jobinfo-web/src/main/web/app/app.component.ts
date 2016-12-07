@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Response } from '@angular/http';
 
 import { Job } from './job';
 import { JobInfo } from './jobinfo';
@@ -10,6 +11,10 @@ import { JobInfoService } from './jobinfo.service';
     templateUrl: 'app.component.html'
 })
 export class AppComponent {
+    
+    needsAuthentication = true;
+    username: string;
+    password: string;
     name = 'JobInfo';
     title = "Job Info";
 
@@ -22,8 +27,18 @@ export class AppComponent {
     }
 
     submit(): void {
+        let self = this;
+        this.needsAuthentication = false;
         if ( this.jobId && this.system ) {
-            this.jobInfoSvc.getJobInfo( this.jobId, this.system ).then( jobInfo => this.jobInfo = jobInfo );
+            this.jobInfoSvc.getJobInfo( this.username, this.password, this.jobId, this.system ).then( jobInfo => this.jobInfo = jobInfo ).catch(function(response) {
+                self.needsAuthentication = true;
+                alert("response is '" + response + "'");
+            });
         }
+    }
+    
+    handleError(response: Response | any) {
+        this.needsAuthentication = true;
+        alert("response is '" + response + "'");
     }
 }

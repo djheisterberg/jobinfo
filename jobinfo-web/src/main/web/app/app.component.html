@@ -1,7 +1,11 @@
 <h1>{{title}}</h1>
 <div>
-	<span><label>Job ID: </label> <input [(ngModel)]="jobId" placeholder="job-id" /></span>
-	<span><label>System: </label> <input [(ngModel)]="system" placeholder="system" /></span>
+   <div *ngIf="needsAuthentication">
+      <span><label>Username: </label><input [(ngModel)]="username" placeholder="username" /></span>
+      <span><label>Password: </label><input [(ngModel)]="password" type="password" placeholder="password" /></span>
+   </div>
+	<span><label>Job ID: </label><input [(ngModel)]="jobId" placeholder="job-id" /></span>
+	<span><label>System: </label><input [(ngModel)]="system" placeholder="system" /></span>
    <span><button (click)="submit()">Submit</button></span>
    <br>
    <br>
