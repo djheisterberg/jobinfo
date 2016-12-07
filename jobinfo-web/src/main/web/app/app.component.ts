@@ -11,8 +11,8 @@ import { JobInfoService } from './jobinfo.service';
     templateUrl: 'app.component.html'
 })
 export class AppComponent {
-    
-    needsAuthentication = true;
+
+    needsAuthentication = false;
     username: string;
     password: string;
     name = 'JobInfo';
@@ -30,15 +30,21 @@ export class AppComponent {
         let self = this;
         this.needsAuthentication = false;
         if ( this.jobId && this.system ) {
-            this.jobInfoSvc.getJobInfo( this.username, this.password, this.jobId, this.system ).then( jobInfo => this.jobInfo = jobInfo ).catch(function(response) {
-                self.needsAuthentication = true;
-                alert("response is '" + response + "'");
+            this.jobInfoSvc.getJobInfo( this.username, this.password, this.jobId, this.system ).then( jobInfo => this.jobInfo = jobInfo ).catch( function( r ) {
+                if ( r instanceof Response ) {
+                    let response = r as Response;
+                    if ( response.status === 401 ) {
+                        self.needsAuthentication = true;
+                    }
+                } else {
+                    alert( "response is '" + r + "'" );
+                }
             });
         }
     }
-    
-    handleError(response: Response | any) {
+
+    handleError( response: Response | any ) {
         this.needsAuthentication = true;
-        alert("response is '" + response + "'");
+        alert( "response is '" + response + "'" );
     }
 }
