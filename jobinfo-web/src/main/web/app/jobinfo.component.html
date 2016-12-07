@@ -1,0 +1,7 @@
+<job [job]="jobInfo.job"></job>
+<br>
+<div *ngIf="jobInfo.nodes">
+   Ganglia links
+   <br>
+   <span *ngFor="let node of jobInfo.nodes; let ix=index"><a href="{{jobInfo.gangliaURLs[ix]}}" target="_blank">{{node}}</a><br></span>
+</div>

@@ -1,0 +1,34 @@
+export class Job {
+    id: string;
+    system: string;
+    state: string;
+    username: string;
+    groupname: string;
+    account: string;
+    jobname: string;
+    nproc: number;
+    mppe: string;
+    mppssp: string;
+    nodes: string;
+    feature: string;
+    gres: string;
+    gattr: string;
+    queue: string;
+    qos: string;
+    submit: string;
+    start: string;
+    end: string;
+    cputReq: string;
+    cput: string;
+    walltimeReq: string;
+    walltime: string;
+    memKBReq: number;
+    memKB: number;
+    vmemKBReq: number;
+    vmemKB: number;
+    software: string;
+    submithost: string;
+    hostlist: string;
+    exitStatus: number;
+    script: string;
+}

@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+<div>
+	<span><label>Job ID: </label> <input [(ngModel)]="jobId" placeholder="job-id" /></span>
+	<span><label>System: </label> <input [(ngModel)]="system" placeholder="system" /></span>
+   <span><button (click)="submit()">Submit</button></span>
+   <br>
+   <br>
+</div>
+<div *ngIf="jobInfo">
+	<jobinfo [jobInfo]="jobInfo"></jobinfo>
+</div>
