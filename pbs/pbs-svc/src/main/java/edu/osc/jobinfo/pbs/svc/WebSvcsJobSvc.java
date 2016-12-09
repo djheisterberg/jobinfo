@@ -215,13 +215,13 @@ public class WebSvcsJobSvc implements JobSvc {
             job.setWalltime(value);
             break;
          case MEM_REQ:
-            job.setMemKBReq(parseInt(id, system, MEM_REQ, value));
+            job.setMemReq(value);
             break;
          case MEM:
             job.setMemKB(parseInt(id, system, MEM, value));
             break;
          case VMEM_REQ:
-            job.setVmemKBReq(parseInt(id, system, VMEM_REQ, value));
+            job.setVmemReq(value);
             break;
          case VMEM:
             job.setVmemKB(parseInt(id, system, VMEM, value));

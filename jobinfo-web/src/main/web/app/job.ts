@@ -22,9 +22,9 @@ export class Job {
     cput: string;
     walltimeReq: string;
     walltime: string;
-    memKBReq: number;
+    memReq: number;
     memKB: number;
-    vmemKBReq: number;
+    vmemReq: number;
     vmemKB: number;
     software: string;
     submithost: string;

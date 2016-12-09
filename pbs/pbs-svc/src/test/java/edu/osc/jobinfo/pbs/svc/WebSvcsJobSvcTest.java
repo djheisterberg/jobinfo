@@ -65,9 +65,7 @@ public class WebSvcsJobSvcTest {
       final String system = "oakley";
       final String jobid = id + "." + system;
       final String nproc = "junk nproc";
-      final String memKBReq = "junk memKBReq";
       final String memKB = "junk memKB";
-      final String vmemKBReq = "junk vmemKBReq";
       final String vmemKB = "junk vmemKB";
       final String exitstatus = "junk exitstatus";
 
@@ -76,9 +74,7 @@ public class WebSvcsJobSvcTest {
       addRow(sb, JobSvc.JOBID, jobid);
       addRow(sb, JobSvc.SYSTEM, system);
       addRow(sb, JobSvc.NPROC, nproc);
-      addRow(sb, JobSvc.MEM_REQ, memKBReq);
       addRow(sb, JobSvc.MEM, memKB);
-      addRow(sb, JobSvc.VMEM_REQ, vmemKBReq);
       addRow(sb, JobSvc.VMEM, vmemKB);
       addRow(sb, JobSvc.EXITSTATUS, exitstatus);
       sb.append(HTML1);
@@ -89,9 +85,7 @@ public class WebSvcsJobSvcTest {
 
       Assert.assertNotNull(job);
       Assert.assertTrue(unparsedFields.contains(JobSvc.NPROC));
-      Assert.assertTrue(unparsedFields.contains(JobSvc.MEM_REQ));
       Assert.assertTrue(unparsedFields.contains(JobSvc.MEM));
-      Assert.assertTrue(unparsedFields.contains(JobSvc.VMEM_REQ));
       Assert.assertTrue(unparsedFields.contains(JobSvc.VMEM));
       Assert.assertTrue(unparsedFields.contains(JobSvc.EXITSTATUS));
    }
@@ -121,9 +115,9 @@ public class WebSvcsJobSvcTest {
       final String cput = "4:05:06";
       final String walltimeReq = "7:08:09";
       final String walltime = "10:11:12";
-      final Integer memKBReq = Integer.valueOf(456);
+      final String memReq = "456MB";
       final Integer memKB = Integer.valueOf(567);
-      final Integer vmemKBReq = Integer.valueOf(678);
+      final String vmemReq = "678MB";
       final Integer vmemKB = Integer.valueOf(789);
       final String software = "software";
       final String submithost = "submithost";
@@ -155,9 +149,9 @@ public class WebSvcsJobSvcTest {
       addRow(sb, JobSvc.CPU, cput);
       addRow(sb, JobSvc.WALLTIME_REQ, walltimeReq);
       addRow(sb, JobSvc.WALLTIME, walltime);
-      addRow(sb, JobSvc.MEM_REQ, memKBReq.toString());
+      addRow(sb, JobSvc.MEM_REQ, memReq);
       addRow(sb, JobSvc.MEM, memKB.toString());
-      addRow(sb, JobSvc.VMEM_REQ, vmemKBReq.toString());
+      addRow(sb, JobSvc.VMEM_REQ, vmemReq);
       addRow(sb, JobSvc.VMEM, vmemKB.toString());
       addRow(sb, JobSvc.SOFTWARE, software);
       addRow(sb, JobSvc.SUBMITHOST, submithost);
@@ -191,9 +185,9 @@ public class WebSvcsJobSvcTest {
       Assert.assertEquals(cput, job.getCput());
       Assert.assertEquals(walltimeReq, job.getWalltimeReq());
       Assert.assertEquals(walltime, job.getWalltime());
-      Assert.assertEquals(memKBReq, job.getMemKBReq());
+      Assert.assertEquals(memReq, job.getMemReq());
       Assert.assertEquals(memKB, job.getMemKB());
-      Assert.assertEquals(vmemKBReq, job.getVmemKBReq());
+      Assert.assertEquals(vmemReq, job.getVmemReq());
       Assert.assertEquals(vmemKB, job.getVmemKB());
       Assert.assertEquals(software, job.getSoftware());
       Assert.assertEquals(submithost, job.getSubmithost());
@@ -240,9 +234,9 @@ public class WebSvcsJobSvcTest {
       Assert.assertEquals("00:00:40", job.getCput());
       Assert.assertEquals("03:00:00", job.getWalltimeReq());
       Assert.assertEquals("00:00:12", job.getWalltime());
-      Assert.assertNull(job.getMemKBReq());
+      Assert.assertNull(job.getMemReq());
       Assert.assertEquals(Integer.valueOf(897232), job.getMemKB());
-      Assert.assertNull(job.getVmemKBReq());
+      Assert.assertNull(job.getVmemReq());
       Assert.assertEquals(Integer.valueOf(3352600), job.getVmemKB());
       Assert.assertNull(job.getSoftware());
       Assert.assertEquals("owens-login02.hpc.osc.edu", job.getSubmithost());

@@ -35,9 +35,9 @@ public class Job {
    private String cput;
    private String walltimeReq;
    private String walltime;
-   private Integer memKBReq;
+   private String memReq;
    private Integer memKB;
-   private Integer vmemKBReq;
+   private String vmemReq;
    private Integer vmemKB;
    private String software;
    private String submithost;
@@ -238,12 +238,12 @@ public class Job {
       this.walltime = walltime;
    }
 
-   public Integer getMemKBReq() {
-      return memKBReq;
+   public String getMemReq() {
+      return memReq;
    }
 
-   public void setMemKBReq(Integer memKBReq) {
-      this.memKBReq = memKBReq;
+   public void setMemReq(String memReq) {
+      this.memReq = memReq;
    }
 
    public Integer getMemKB() {
@@ -254,12 +254,12 @@ public class Job {
       this.memKB = memKB;
    }
 
-   public Integer getVmemKBReq() {
-      return vmemKBReq;
+   public String getVmemReq() {
+      return vmemReq;
    }
 
-   public void setVmemKBReq(Integer vmemKBReq) {
-      this.vmemKBReq = vmemKBReq;
+   public void setVmemReq(String vmemReq) {
+      this.vmemReq = vmemReq;
    }
 
    public Integer getVmemKB() {
