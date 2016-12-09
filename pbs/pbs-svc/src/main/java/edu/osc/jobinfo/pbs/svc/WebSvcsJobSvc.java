@@ -36,6 +36,8 @@ public class WebSvcsJobSvc implements JobSvc {
          GRES, GATTR, QUEUE, QOS, SUBMIT, START, END, CPU_REQ, CPU, WALLTIME_REQ, WALLTIME, MEM_REQ, MEM, VMEM_REQ,
          VMEM, SOFTWARE, SUBMITHOST, HOSTLIST, EXITSTATUS, SCRIPT };
 
+   public final static String DATE_0 = "1969-12-31 19:00:00";
+
    private final static Logger logger = LoggerFactory.getLogger(WebSvcsJobSvc.class);
 
    @Resource(name = "domain")
@@ -194,13 +196,19 @@ public class WebSvcsJobSvc implements JobSvc {
             job.setQos(value);
             break;
          case SUBMIT:
-            job.setSubmit(value);
+            if (!DATE_0.equals(value)) {
+               job.setSubmit(value);
+            }
             break;
          case START:
-            job.setStart(value);
+            if (!DATE_0.equals(value)) {
+               job.setStart(value);
+            }
             break;
          case END:
-            job.setEnd(value);
+            if (!DATE_0.equals(value)) {
+               job.setEnd(value);
+            }
             break;
          case CPU_REQ:
             job.setCputReq(value);

@@ -91,6 +91,31 @@ public class WebSvcsJobSvcTest {
    }
 
    @Test
+   public void testDate0() {
+      final String id = "1234";
+      final String system = "oakley";
+      final String jobid = id + "." + system;
+
+      StringBuilder sb = new StringBuilder(1000);
+      sb.append(HTML0);
+      addRow(sb, JobSvc.JOBID, jobid);
+      addRow(sb, JobSvc.SYSTEM, system);
+      addRow(sb, JobSvc.SUBMIT, WebSvcsJobSvc.DATE_0);
+      addRow(sb, JobSvc.START, WebSvcsJobSvc.DATE_0);
+      addRow(sb, JobSvc.END, WebSvcsJobSvc.DATE_0);
+      sb.append(HTML1);
+
+      Job job = jobSvc.parseJobHTML(id, system, sb.toString());
+
+      Assert.assertNotNull(job);
+      Assert.assertEquals(jobid, job.getId());
+      Assert.assertEquals(system, job.getSystem());
+      Assert.assertNull(job.getSubmit());
+      Assert.assertNull(job.getStart());
+      Assert.assertNull(job.getEnd());
+   }
+
+   @Test
    public void testParse() {
       final String id = "1234";
       final String system = "oakley";
