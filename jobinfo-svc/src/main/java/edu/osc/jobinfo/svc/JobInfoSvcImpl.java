@@ -32,7 +32,7 @@ public class JobInfoSvcImpl implements JobInfoSvc {
 
    // https://cts05.osc.edu/gweb/?r=hour&cs=11/03/2016+09:00&ce=11/04/2016+17:00&c=Oakley+nodes&h=n0004.ten.osc.edu&tab=m&mc=2&metric_group=ALLGROUPS
 
-   private final static String BASE_URL = "https://cts05.osc.edu/gweb/";
+   private final static String BASE_URL = "https://ganglia.osc.edu/";
    private final static String DEFAULT_DOMAIN = "ten.osc.edu";
    private static final String UTF8 = "UTF-8";
 
@@ -51,7 +51,7 @@ public class JobInfoSvcImpl implements JobInfoSvc {
 
    @PostConstruct
    protected void postConstruct() {
-      systemMap.put("oak", "Oakley nodes");
+      systemMap.put("oak", "Oakley");
       systemMap.put("owens", "Owens");
       systemMap.put("ruby", "Ruby");
 

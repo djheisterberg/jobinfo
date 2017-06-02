@@ -36,6 +36,7 @@ public interface JobSvc {
    public final static String HOSTLIST = "hostlist";
    public final static String EXITSTATUS = "exit_status";
    public final static String SCRIPT = "script";
+   public final static String SW_APP = "sw_app";
 
    public String getJobHTML(String authentication, String id, String system);
 

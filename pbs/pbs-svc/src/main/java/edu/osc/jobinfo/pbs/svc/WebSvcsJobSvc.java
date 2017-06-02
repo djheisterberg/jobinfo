@@ -29,12 +29,12 @@ import edu.osc.jobinfo.pbs.api.JobSvc;
 @Singleton
 public class WebSvcsJobSvc implements JobSvc {
 
-   public final static String DOMAIN = "websvcs.osc.edu";
-   public final static String PATH = "/pbsacct/jobinfo.php";
+   public final static String DOMAIN = "pbsacct.osc.edu";
+   public final static String PATH = "/jobinfo.php";
 
    public final static String[] FIELDS = { USERNAME, GROUPNAME, ACCOUNT, JOBNAME, NPROC, MPPE, MPPSSP, NODES, FEATURE,
          GRES, GATTR, QUEUE, QOS, SUBMIT, START, END, CPU_REQ, CPU, WALLTIME_REQ, WALLTIME, MEM_REQ, MEM, VMEM_REQ,
-         VMEM, SOFTWARE, SUBMITHOST, HOSTLIST, EXITSTATUS, SCRIPT };
+         VMEM, SOFTWARE, SUBMITHOST, HOSTLIST, EXITSTATUS, SCRIPT, SW_APP };
 
    public final static String DATE_0 = "1969-12-31 19:00:00";
 
@@ -248,6 +248,9 @@ public class WebSvcsJobSvc implements JobSvc {
             break;
          case SCRIPT:
             job.setScript(value);
+            break;
+         case SW_APP:
+            job.setSwApp(value);
             break;
          default:
             logger.error("Unrecognized field '" + key + "' for " + id + "." + system);

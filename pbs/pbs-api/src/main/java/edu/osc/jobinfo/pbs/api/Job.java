@@ -44,6 +44,7 @@ public class Job {
    private String hostlist;
    private Integer exitStatus;
    private String script;
+   private String swApp;
 
    public Job() {
    }
@@ -308,5 +309,13 @@ public class Job {
 
    public void setScript(String script) {
       this.script = script;
+   }
+
+   public String getSwApp() {
+      return swApp;
+   }
+
+   public void setSwApp(String swApp) {
+      this.swApp = swApp;
    }
 }

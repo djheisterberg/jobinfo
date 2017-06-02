@@ -149,6 +149,7 @@ public class WebSvcsJobSvcTest {
       final String hostlist = "hostlist";
       final Integer exitstatus = Integer.valueOf(-11);
       final String script = "script";
+      final String swApp = "swApp";
 
       StringBuilder sb = new StringBuilder(1000);
       sb.append(HTML0);
@@ -183,6 +184,7 @@ public class WebSvcsJobSvcTest {
       addRow(sb, JobSvc.HOSTLIST, hostlist);
       addRow(sb, JobSvc.EXITSTATUS, exitstatus.toString());
       addRow(sb, JobSvc.SCRIPT, script);
+      addRow(sb, JobSvc.SW_APP, swApp);
       sb.append(HTML1);
 
       Job job = jobSvc.parseJobHTML(id, system, sb.toString());
@@ -219,6 +221,7 @@ public class WebSvcsJobSvcTest {
       Assert.assertEquals(hostlist, job.getHostlist());
       Assert.assertEquals(exitstatus, job.getExitStatus());
       Assert.assertEquals(script, job.getScript());
+      Assert.assertEquals(swApp, job.getSwApp());
    }
 
    private void addRow(StringBuilder sb, String key, String value) {
@@ -270,6 +273,7 @@ public class WebSvcsJobSvcTest {
       String script = job.getScript();
       Assert.assertNotNull(script);
       Assert.assertTrue(script.startsWith("#!/bin/bash -l"));
+      Assert.assertNull(job.getSwApp());
       System.out.println(script);
    }
 

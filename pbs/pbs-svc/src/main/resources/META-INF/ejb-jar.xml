@@ -8,12 +8,12 @@
 			<env-entry>
 				<env-entry-name>domain</env-entry-name>
 				<env-entry-type>java.lang.String</env-entry-type>
-				<env-entry-value>websvcs.osc.edu</env-entry-value>
+				<env-entry-value>pbsacct.osc.edu</env-entry-value>
 			</env-entry>
 			<env-entry>
 				<env-entry-name>path</env-entry-name>
 				<env-entry-type>java.lang.String</env-entry-type>
-				<env-entry-value>/pbsacct/jobinfo.php</env-entry-value>
+				<env-entry-value>/jobinfo.php</env-entry-value>
 			</env-entry>
 		</session>
 	</enterprise-beans>

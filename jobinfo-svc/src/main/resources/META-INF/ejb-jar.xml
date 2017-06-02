@@ -8,7 +8,7 @@
 			<env-entry>
 				<env-entry-name>baseURL</env-entry-name>
 				<env-entry-type>java.lang.String</env-entry-type>
-				<env-entry-value>https://cts05.osc.edu/gweb/</env-entry-value>
+				<env-entry-value>https://ganglia.osc.edu/</env-entry-value>
 			</env-entry>
 		</session>
 	</enterprise-beans>

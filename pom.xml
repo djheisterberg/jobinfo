@@ -7,13 +7,10 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<scala.major>2.11</scala.major>
-		<scala.version>${scala.major}.8</scala.version>
 		<javaee.version>7.0-1</javaee.version>
 		<openejb.version>7.0.2</openejb.version>
 		<slf4j.version>1.7.21</slf4j.version>
 		<junit.version>4.12</junit.version>
-		<scalatest.version>3.0.0</scalatest.version>
 		<meanbean.version>2.0.3</meanbean.version>
 	</properties>
 
@@ -28,29 +25,10 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>net.alchim31.maven</groupId>
-				<artifactId>scala-maven-plugin</artifactId>
-				<version>3.2.2</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>add-source</goal>
-							<goal>compile</goal>
-							<goal>testCompile</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-library</artifactId>
-			<version>${scala.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>org.apache.tomee</groupId>
 			<artifactId>javaee-api</artifactId>
@@ -71,12 +49,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.scalatest</groupId>
-			<artifactId>scalatest_2.11</artifactId>
-			<version>${scalatest.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
